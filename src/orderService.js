@@ -29,6 +29,23 @@ function createOrderSummary(order) {
   };
 }
 
+function fetchOrderStatus(orderId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!orderId) {
+        reject(new Error('Order ID is required'));
+        return;
+      }
+
+      resolve({
+        orderId,
+        status: 'confirmed',
+      });
+    }, 10);
+  });
+}
+
 module.exports = {
   createOrderSummary,
+  fetchOrderStatus,
 };
